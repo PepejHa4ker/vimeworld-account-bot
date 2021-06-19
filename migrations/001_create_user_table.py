@@ -35,10 +35,10 @@ def migrate(migrator, database, fake=False, **kwargs):
     migrator.sql("""
     CREATE TABLE IF NOT EXISTS public.users (
         id serial NOT NULL,
-        login text NOT NULL,
+        login varchar(20) NOT NULL,
         password text NOT NULL,
         password_version text NOT NULL,
-        email text NOT NULL,
+        email varchar(32) NOT NULL,
         reg_time text NOT NULL,
         
         CONSTRAINT id_pkey PRIMARY KEY (id)

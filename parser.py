@@ -16,10 +16,10 @@ def parse(filename):
 
             database.run_sql(
                 """
-                INSERT INTO public.users (login, password, password_version, email, reg_time) 
-                VALUES (%s, %s, %s, %s, %s)
+                INSERT INTO public.users (id, login, password, password_version, email, reg_time) 
+                VALUES (%s, %s, %s, %s, %s, %s)
                 """,
-                (content[1], content[2], content[3], content[8], timestamp.strftime('%Y/%m/%d-%H:%M:%S'))
+                (content[0], content[1], content[2], content[3], content[8], timestamp.strftime('%Y/%m/%d-%H:%M:%S'))
             )
 
 
