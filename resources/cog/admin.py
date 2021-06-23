@@ -37,13 +37,13 @@ class Admin(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(administrator=True)
-    async def get_profile(self, ctx, member: discord.Member):
+    async def get_profile(self, ctx, member: Member):
         await send_profile(ctx, member)
 
     # MONEY MANAGEMENT
     @commands.command()
     @commands.has_permissions(administrator=True)
-    async def add_money(self, ctx, member: discord.Member, amount):
+    async def add_money(self, ctx, member: Member, amount: int):
         login = str(member)
 
         if not is_registered(login):
@@ -53,13 +53,13 @@ class Admin(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(administrator=True)
-    async def take_money(self, ctx, member: discord.Member, amount):
+    async def take_money(self, ctx, member: Member, amount: int):
         login = str(member)
 
         if not is_registered(login):
             raise ValueError()
 
-        update_balance(login, '-' + amount)
+        update_balance(login, -amount)
 
     @commands.command()
     @commands.has_permissions(administrator=True)

@@ -1,5 +1,7 @@
 from datetime import datetime
+
 from dateutil.relativedelta import relativedelta
+
 from util import database
 
 
@@ -14,7 +16,7 @@ def fetch_discord_data(login):
     return res
 
 
-def fetch_data(login):
+def user_data_by_login(login):
     res = database.fetch_single(
         """
         SELECT * FROM public.users
@@ -26,7 +28,7 @@ def fetch_data(login):
     return res
 
 
-def fetch_data_collection(email):
+def users_data_by_email(email):
     res = database.fetch_collection(
         """
         SELECT * FROM public.users
@@ -82,7 +84,7 @@ def update_subscription(login, days):
     )
 
 
-def update_balance(login, balance):
+def update_balance(login, balance: int):
     database.run_sql(
         """
         UPDATE public.discord 
@@ -92,7 +94,7 @@ def update_balance(login, balance):
     )
 
 
-def set_balance(login, balance):
+def set_balance(login, balance: int):
     database.run_sql(
         """
         UPDATE public.discord 
